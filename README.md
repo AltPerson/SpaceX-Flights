@@ -12,7 +12,7 @@
 » Atomic design Pattern <br>
 » Styled-Components <br>
 » React-Recoil <br>
-» React Apollo <br>
+» React-Apollo <br>
 » React TS
 
 <h2>Screenshots of the Project 📸</h2>
