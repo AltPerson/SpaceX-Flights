@@ -6,6 +6,7 @@ import { useRecoilState } from "recoil";
 import FavoriteToursHeader from "@/components/atoms/favorite-tours/favorite-tours-header";
 import FavoriteToursHeaderClearButton from "@/components/atoms/favorite-tours/favorite-tours-header-button";
 import FavoriteToursList from "./favorite-tours-list";
+import { toast } from "react-toastify";
 
 const FavoriteToursWrapper = styled.section`
   ${containerMixin}
@@ -16,10 +17,21 @@ const FavoriteTours = () => {
   const [favoritesTours, setFavoritesTours] =
     useRecoilState(favoritesToursState);
 
+  const clearButtonHandler = () => {
+    if (favoritesTours.length === 0) {
+      toast.warn("No tours for deleting!", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      return;
+    }
+    setFavoritesTours([]);
+    toast.info("Tours are deleted!", { position: toast.POSITION.TOP_RIGHT });
+  };
+
   return (
     <FavoriteToursWrapper>
       <FavoriteToursHeader>
-        <FavoriteToursHeaderClearButton onClick={() => setFavoritesTours([])}>
+        <FavoriteToursHeaderClearButton onClick={clearButtonHandler}>
           Clear all
         </FavoriteToursHeaderClearButton>
       </FavoriteToursHeader>
