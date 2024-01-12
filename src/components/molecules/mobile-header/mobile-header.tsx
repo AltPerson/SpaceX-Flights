@@ -25,6 +25,7 @@ const MobileHeaderWrapper = styled.div<MobileHeaderWrapperProps>`
   align-items: center;
   flex-direction: column;
   gap: 20px;
+  z-index: 20;
 `;
 
 const MobileHeader = ({ $isActive }: { $isActive: boolean }) => {

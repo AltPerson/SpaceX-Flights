@@ -1,12 +1,8 @@
 import { heroSliderTabs } from "@/contants";
 import styled from "styled-components";
-import radioImageNonActive from "@/assets/common/nonActiveCircleWhite.svg";
-import radioImageActive from "@/assets/common/activeCircleWhite.svg";
+import RadioImageNonActive from "@/assets/common/nonActiveCircleWhite.svg";
+import RadioImageActive from "@/assets/common/activeCircleWhite.svg";
 import { flexMixinCenterWithGap } from "@/styles/global-styles";
-
-interface HeroSliderButtonLabelProps {
-  $img: string;
-}
 
 interface HeroSliderTabsProps {
   activeIndex: number;
@@ -23,22 +19,28 @@ const HeroSliderButtons = styled.div`
   ${flexMixinCenterWithGap({ gapValue: "8" })}
   @media (max-width: 1298px) {
     & {
-      left: 50%;
-      bottom: 20%;
-      transform: translate(-50%, 20%);
+      left: 48%;
+      bottom: 25%;
+      transform: translate(-50%, 25%);
+    }
+  }
+  @media (max-width: 425px) {
+    & {
+      left: 48%;
+      bottom: 30%;
+      transform: translate(-50%, 25%);
     }
   }
 `;
 
-const HeroSliderButtonLabel = styled.button<HeroSliderButtonLabelProps>`
+const HeroSliderButtonLabel = styled.button`
   width: 24px;
   height: 24px;
   cursor: pointer;
   transform: var(--slider-button-transition);
-  background: url(${({ $img }) => $img});
+  background: transparent;
   outline: none;
   border: none;
-  background-color: transparent;
 `;
 
 const HeroSliderTabs = ({
@@ -51,8 +53,13 @@ const HeroSliderTabs = ({
         {heroSliderTabs.map((_, indx) => (
           <HeroSliderButtonLabel
             key={indx}
-            $img={activeIndex === indx ? radioImageActive : radioImageNonActive}
-            onClick={() => onClickHandler(indx)}></HeroSliderButtonLabel>
+            onClick={() => onClickHandler(indx)}>
+            {activeIndex === indx ? (
+              <RadioImageActive />
+            ) : (
+              <RadioImageNonActive />
+            )}
+          </HeroSliderButtonLabel>
         ))}
       </HeroSliderButtons>
     </>

@@ -1,18 +1,27 @@
 import {
+  containerMixin,
   flexMixinCenterWithGap,
   font_Lato_300,
   slideIn,
 } from "@/styles/global-styles";
 import styled from "styled-components";
-import arrowDown from "@/assets/common/arrowDown.svg";
+import ArrowDown from "@/assets/common/arrowDown.svg";
 
 const HeroExploreWrapper = styled.div`
   position: absolute;
   z-index: 9;
   bottom: 5%;
-  left: 50%;
-  transform: translate(-50%, 5%);
-  ${flexMixinCenterWithGap({ gapValue: "8" })}
+  left: 48%;
+  transform: translate(-48%, 5%);
+  ${containerMixin}
+  ${flexMixinCenterWithGap({ gapValue: "8" })} 
+	@media (max-width: 425px) {
+    & {
+      left: 50%;
+      bottom: 15%;
+      transform: translate(-50%, 15%);
+    }
+  }
 `;
 const HeroExploreTitle = styled.h3`
   ${font_Lato_300}
@@ -26,8 +35,7 @@ const HeroExploreButton = styled.button`
   height: 26px;
   border: none;
   outline: none;
-  background-color: transparent;
-  background-image: url(${arrowDown});
+  background: transparent;
   cursor: pointer;
   animation: ${slideIn} infinite ease-in 1s both alternate;
 `;
@@ -40,7 +48,9 @@ const HeroExplore = ({
   return (
     <HeroExploreWrapper>
       <HeroExploreTitle>Explore tours</HeroExploreTitle>
-      <HeroExploreButton onClick={scrollToToursSlider} />
+      <HeroExploreButton onClick={scrollToToursSlider}>
+        <ArrowDown />
+      </HeroExploreButton>
     </HeroExploreWrapper>
   );
 };

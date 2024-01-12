@@ -8,6 +8,7 @@ import { mobileNavbarState } from "@/states/atom";
 import { useRecoilState } from "recoil";
 import BurgerMenu from "@/components/atoms/burger-menu/burger-menu";
 import MobileHeader from "@/components/molecules/mobile-header/mobile-header";
+import BurgerMenuIcon from "@/assets/common/menu.svg";
 
 const HeaderWrapper = styled.div`
   min-height: 80px;
@@ -21,7 +22,7 @@ const HeaderElement = styled.header`
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 20;
 `;
 
 const Header = () => {
@@ -34,7 +35,9 @@ const Header = () => {
         <Logo />
         <Navbar />
         <SignInBar $isActive={pathname.includes("/favorites")} />
-        <BurgerMenu onClick={() => setIsActiveMobile((prev) => !prev)} />
+        <BurgerMenu onClick={() => setIsActiveMobile((prev) => !prev)}>
+          <BurgerMenuIcon />
+        </BurgerMenu>
       </HeaderWrapper>
       <MobileHeader $isActive={pathname.includes("/favorites")} />
     </HeaderElement>
