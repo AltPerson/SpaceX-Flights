@@ -16,8 +16,9 @@ interface MobileHeaderWrapperProps {
 
 const MobileHeaderWrapper = styled.div<MobileHeaderWrapperProps>`
   position: absolute;
-  display: ${({ $isActiveMobile }) => ($isActiveMobile ? "flex" : "none")};
-  right: 0;
+  display: flex;
+  right: ${({ $isActiveMobile }) => ($isActiveMobile ? 0 : "-100%")};
+  transition: right 0.4s ease-in;
   min-height: 100vh;
   background: var(--header-background-color);
   min-width: 200px;
