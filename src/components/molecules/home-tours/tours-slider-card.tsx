@@ -23,7 +23,23 @@ const ToursSliderCardWrapper = styled.div<IsFavoriteItemType>`
 
   @media (max-width: 1440px) {
     & {
-      min-width: 260px;
+      min-width: 350px;
+      max-width: fit-content;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 375px) {
+    & {
+      min-width: 300px;
+      max-width: fit-content;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 320px) {
+    & {
+      min-width: 250px;
       max-width: fit-content;
       width: 100%;
     }
